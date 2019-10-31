@@ -5,7 +5,7 @@ const userRouter = require("./users/userRouter");
 const postRouter = require("./posts/postRouter");
 
 function logger(req, res, next) {
-  console.log(req.method, req.url, req);
+  console.log(req.method, req.url);
   next();
 }
 server.use(express.json());

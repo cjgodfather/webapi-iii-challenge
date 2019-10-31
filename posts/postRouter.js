@@ -3,8 +3,6 @@ const postDb = require("./postDb");
 
 const router = express.Router();
 
-console.log(express);
-
 router.get("/", (req, res) => {
   postDb.get().then(posts => res.status(200).json(posts));
 });

@@ -3,6 +3,8 @@ const userDb = require("./userDb");
 
 const router = express.Router();
 
+console.log(`router`, router.handle);
+
 router.post("/", validateUser, (req, res) => {
   const name = req.userName;
   userDb.insert(name).then(user => res.status(200).json(user));
@@ -39,15 +41,13 @@ router.delete("/:id", validateUserId, (req, res) => {
 
 router.put("/:id", validateUser, (req, res) => {});
 
-//custom middleware
-
 function validateUserId(req, res, next) {
   const userId = req.params.id;
   if (userId > 20) {
     res.status(400).json({ message: "invalid user id" });
   } else {
     req.user = userId;
-    next();
+    console.log(`next`, next());
   }
 }
 
